@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
-#include <time.h>
+
 
 void SK_print(int SG[9][9]);
 void Mask_Pattern(int SG[9][9],int level);

@@ -2,7 +2,7 @@
 
 
 int main() {
-    srand(time(NULL));
+    
 
     int sudokuGrid[9][9] = {0};
     int level;
