@@ -32,12 +32,12 @@ int main() {
     printf("\n");
     printf("              * To quit the game tap (-1) \n");
     printf("              To Start you can access the Cells just by (row,col,value)\n");
-    printf("\n Your Solution [row] [col] [value] :\n ");
+    printf("\n Your Solution [row] [col] [value] :\n");
 
     int row, col, val;
-    int gameComplete = 0;
+    
 
-    while (!gameComplete) {
+    while (!EstComplet(sudokuGrid)) {
         printf("Row : ");
         scanf("%d", &row);
         if (row == -1) {
@@ -64,19 +64,11 @@ int main() {
 
         sudokuGrid[row][col] = val;
 
-        printf("\033[H\033[J"); // Clear console before printing updated grid
+        printf("\033[H\033[J");
         printf("\n                      ** Generated Sudoku **\n");
         SK_print(sudokuGrid);
-
-        gameComplete = ResoudreSudoku(sudokuGrid);
-
-        if (gameComplete) {
-            printf("\nCongratulations! You've solved the Sudoku!\n");
-            break; // Exit the loop if the Sudoku is solved
-        } else {
-            printf("\nYour Solution [row] [col] [value]: ");
-        }
     }
+    printf("\nCongratulations! You've solved the Sudoku!\n");
 
     return 0;
 }

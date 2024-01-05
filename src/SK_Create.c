@@ -52,7 +52,7 @@ bool isSafe(int SG[9][9], int l, int c, int num) {
 
 
 // Fonction pour resoudre Sudoku on utilisant le backtracking method
-/*bool ResoudreSudoku(int SG[9][9]) {
+bool ResoudreSudoku(int SG[9][9]) {
     int lig, col;
 
     // Controler les cells vide
@@ -87,45 +87,6 @@ bool isSafe(int SG[9][9], int l, int c, int num) {
         }
     }
 
-    return false;
-}*/
-bool ResoudreSudoku(int SG[9][9]) {
-    int row, col;
-    bool isEmpty = false;
-
-    // Find an empty cell
-    for (row = 0; row < 9; row++) {
-        for (col = 0; col < 9; col++) {
-            if (SG[row][col] == 0) {
-                isEmpty = true;
-                break;
-            }
-        }
-        if (isEmpty) {
-            break;
-        }
-    }
-
-    // If no empty cell is found, the Sudoku is solved
-    if (!isEmpty) {
-        return true;
-    }
-
-    // Try placing numbers in the empty cell
-    for (int num = 1; num <= 9; num++) {
-        if (isSafe(SG, row, col, num)) {
-            SG[row][col] = num;
-
-            if (ResoudreSudoku(SG)) {
-                return true;  // If a solution is found, return true
-            }
-
-            // If placing 'num' in the current cell doesn't lead to a solution, backtrack
-            SG[row][col] = 0;  // Reset the cell to empty (backtrack)
-        }
-    }
-
-    // No valid number was found for the cell, return false (backtrack further)
     return false;
 }
 
@@ -201,4 +162,14 @@ void Mask_Pattern(int SG[9][9],int level) {
     }
 }
 
-
+bool EstComplet(int sudokuGrid[9][9]) {
+    
+    for (int ligne = 0; ligne < 9; ligne++) {
+        for (int col = 0; col < 9; col++) {
+            if (sudokuGrid[ligne][col] == 0) {
+                return false;
+            }
+        }
+    }
+    return true;
+}
